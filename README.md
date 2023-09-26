@@ -14,4 +14,4 @@ A player is considered to have a hit-streak/strikeout-streak of size _n_ if they
 
 
 ### Please be aware...
-I have implemented a .5 second lag in between each player being processed in order to avoid overloading baseball-reference.com with HTTP requests, so processing times may be slow for large batches of players. 
+I have implemented a 1 second lag in between each player being processed in order to avoid overloading baseball-reference.com with HTTP requests, so processing times may be slow for large batches of players. 
