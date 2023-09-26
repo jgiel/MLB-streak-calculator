@@ -30,7 +30,7 @@ def main():
     csv_writer.writerow(fields)
 
     for player_name in player_names:
-        time.sleep(.5) #avoid overloading http requests
+        time.sleep(1) #avoid overloading http requests
         player_name = player_name.strip() #remove newline char
 
         #catch errors from streak.py
