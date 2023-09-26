@@ -1,5 +1,5 @@
 # MLB-streak-calculator
-Python program that creates a CSV containing MLB players' hit-streak and strikeout-streak data, which is calculated via data available on baseball-reference.com.  
+Python program that creates a CSV containing MLB players' hit-streak and strikeout-streak data, which is calculated using data available on baseball-reference.com.  
 
 A player is considered to have a hit-streak/strikeout-streak of size _n_ if they played _n_ consecutive games in which they had a hit/strikeout (or conversely, a no-hit-streak/no-strikeout-streak of size _n_ if they played _n_ consecutive games in which they had no hits/strikeouts).
 
