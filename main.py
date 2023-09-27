@@ -42,7 +42,7 @@ def main():
 
     # get data and upload to csv for each player
     for player_name in player_names:
-        print("("+str(current_player)+"/"+str(total_players)+")") #track progress in terminal
+        print("\n("+str(current_player)+"/"+str(total_players)+")") #track progress in terminal
         time.sleep(sleep_time) #avoid overloading http requests
 
         player_name = player_name.strip() #remove newline char

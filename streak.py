@@ -45,7 +45,7 @@ def get_html(player_id, year):
     req = urllib.request.Request(url=url_string,headers=headers)
     
     #return string from request
-    print("Player's Baseball Reference URL: "+url_string+"\n")
+    print("Player's Baseball Reference URL: "+url_string)
     return urllib.request.urlopen(req).read().decode("utf-8")
 
 
