@@ -24,7 +24,7 @@ def get_player_id(player_name):
         #id is first element, name is second
         if row[0] and row[1] and row[1]==player_name and br_id == "":
             br_id = row[0]
-            print("\nFound "+player_name+"'s Baseball Reference ID: "+br_id)
+            print("Found "+player_name+"'s Baseball Reference ID: "+br_id)
         #if another player w/ name is found after id has been updated
         elif row[0] and row[1] and row[1]==player_name and br_id != "":
             raise Exception("Another player with name "+player_name+" found. Baseball Reference ID: " + row[4])
@@ -45,7 +45,7 @@ def get_html(player_id, year):
     req = urllib.request.Request(url=url_string,headers=headers)
     
     #return string from request
-    print("Player's Baseball Reference URL: "+url_string)
+    print("Player's Baseball Reference URL: "+url_string+"\n")
     return urllib.request.urlopen(req).read().decode("utf-8")
 
 
