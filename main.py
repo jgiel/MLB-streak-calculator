@@ -9,7 +9,9 @@ import csv
 import time
 from datetime import datetime
 from pathlib import Path
+import os
 
+sleep_time = 2 # lag to prevent http overload
 
 def main():
     #get file of players
@@ -19,9 +21,14 @@ def main():
     playername_file = open(playername_file_name)
     player_names = playername_file.readlines()
     
+    #create directory for output csvs if doesn't already exist
+    output_dir_path = str(Path().absolute())+"/outputs"
+    if(not os.path.exists(output_dir_path)):
+        os.makedirs(output_dir_path)
+
     #create output csv
-    output_csv_title = "streak_info("+datetime.now().strftime("%m-%d-%Y_%H:%M")+").csv"
-    output_csv = open(output_csv_title, "w")
+    output_name = "/streak_info("+datetime.now().strftime("%m-%d-%Y_%H:%M")+").csv"
+    output_csv = open(output_dir_path+output_name, "w")
     csv_writer = csv.writer(output_csv)
     fields = ['Name', 'BR ID', 'Hit streaks (old to new)', 'No hit streaks (old to new)', 'Avg. hit streak-length',\
                'Avg. no-hit streak-length', 'Current hit streak type', 'Current hit streak', 'Strikeout streaks (old to new)',\
@@ -29,12 +36,20 @@ def main():
                     'Current strikeout streak type', 'Current strikeout streak', 'Exception Message']
     csv_writer.writerow(fields)
 
+    #for tracking progress in terminal output
+    total_players = len(player_names)
+    current_player = 1
+
+    # get data and upload to csv for each player
     for player_name in player_names:
-        time.sleep(1) #avoid overloading http requests
+        print("("+str(current_player)+"/"+str(total_players)+")") #track progress in terminal
+        time.sleep(sleep_time) #avoid overloading http requests
+
         player_name = player_name.strip() #remove newline char
 
         #catch errors from streak.py
         try:
+            
             player_id = streak.get_player_id(player_name)
 
             #exception handle for not found id?
@@ -89,6 +104,7 @@ def main():
                 csv_writer.writerow(data)
             else:
                 raise Exception("ID not found for "+player_name)
+            current_player = current_player + 1
             
         #if exception, write exception info to csv
         except Exception as e:
