@@ -64,10 +64,10 @@ def parse_html(html_string, stat_type):
     modded_html_string = html_string[html_string.find('Batting Game Log</caption>'):] #trim off front
     modded_html_string = modded_html_string[modded_html_string.find('<tbody>'):modded_html_string.find('</tbody>')]
 
-    #save for testing
-    trimmed_html = open('trimmed_html.txt', 'w')
-    trimmed_html.write(modded_html_string)
-    trimmed_html.close()
+    # save for testing
+    # trimmed_html = open('trimmed_html.txt', 'w')
+    # trimmed_html.write(modded_html_string)
+    # trimmed_html.close()
 
     #extract event count data
     counts = []
